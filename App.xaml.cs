@@ -1,7 +1,6 @@
 using Avalonia;
 using Avalonia.Markup.Xaml;
 using Avalonia.BattleCity.Model;
-using Avalonia.Gtk3;
 namespace Avalonia.BattleCity
 {
     public class App : Application
@@ -27,8 +26,7 @@ namespace Avalonia.BattleCity
         }
 
         static AppBuilder BuildAvaloniaApp() => AppBuilder.Configure<App>()
-            .UsePlatformDetect().UseGtk3(new Gtk3PlatformOptions{UseGpuAcceleration=true});
-
+            .UsePlatformDetect();
 
     }
 }

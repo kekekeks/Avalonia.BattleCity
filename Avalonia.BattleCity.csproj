@@ -6,9 +6,12 @@
     <PackageId>Avalonia.BattleCity</PackageId>
   </PropertyGroup>
     <ItemGroup>
-        <EmbeddedResource Include="**\*.xaml;Assets\*;Resources\*" Exclude="bin\**;obj\**;**\*.xproj;packages\**;@(EmbeddedResource)" />
+        <AvaloniaResource Include="**\*.xaml;Assets\*;Resources\*" Exclude="bin\**;obj\**;**\*.xproj;packages\**;@(EmbeddedResource)" />
     </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Avalonia.Desktop" Version="0.7.1-build749-beta" />
+    <PackageReference Include="Avalonia" Version="0.8.1-cibuild0002060-beta" />
+    <PackageReference Include="Avalonia.Skia.Linux.Natives" Version="1.68.0.2" />
+
+    <PackageReference Include="Avalonia.Desktop" Version="0.8.1-cibuild0002060-beta" />
   </ItemGroup>
 </Project>

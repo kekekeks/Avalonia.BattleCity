@@ -7,6 +7,7 @@ using Avalonia.Markup;
 using Avalonia.Media.Imaging;
 using Avalonia.BattleCity.Model;
 using Avalonia.Data.Converters;
+using Avalonia.Platform;
 
 
 namespace Avalonia.BattleCity.Infrastructure
@@ -22,9 +23,8 @@ namespace Avalonia.BattleCity.Infrastructure
             return
                 _cache ??
                 (_cache = Enum.GetValues(typeof(TerrainTileType)).OfType<TerrainTileType>().ToDictionary(t => t, t =>
-                    new Bitmap(
-                        typeof(TerrainTileConverter).GetTypeInfo()
-                            .Assembly.GetManifestResourceStream($"Avalonia.BattleCity.Resources.{t}.png"))));
+                    new Bitmap(AvaloniaLocator.Current.GetService<IAssetLoader>()
+                        .Open(new Uri($"avares://Avalonia.BattleCity/Resources/{t}.png")))));
         }
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture) => GetCache()[(TerrainTileType) value];

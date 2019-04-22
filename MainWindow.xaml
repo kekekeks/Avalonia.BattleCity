@@ -4,6 +4,7 @@
         xmlns:tran="clr-namespace:Avalonia.Animation;assembly=Avalonia.Animation"
         xmlns:infrastructure="clr-namespace:Avalonia.BattleCity.Infrastructure;assembly=Avalonia.BattleCity"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="Avalonia.BattleCity.MainWindow"
         Title="Avalonia.BattleCity" Width="640" Height="480" Design.DataContext="{x:Static model:GameField.DesignInstance}" >
   <Window.Styles >
     <Style Selector="ItemsControl > ContentPresenter">
@@ -18,7 +19,7 @@
       </Setter>
       
     </Style>
-    <Style Selector="ItemsControl > ContentPresenter.test:pointerover">
+    <Style Selector="ItemsControl > ContentPresenter:pointerover">
       <Setter Property="Opacity" Value="0.5"/>
     </Style>
   </Window.Styles>
@@ -49,38 +50,38 @@
                            PlaybackDirection="Alternate"
                            Easing="SineEaseInOut"
                            FillMode="None">
-                   <KeyFrame Cue="70%">
-                      <Setter Property="ScaleTransform.ScaleX" Value="2"/>
-                      <Setter Property="ScaleTransform.ScaleY" Value="2"/>
-                    </KeyFrame>
-                    <KeyFrame Cue="90%">
-                      <Setter Property="ScaleTransform.ScaleX" Value="2.5"/>
-                      <Setter Property="ScaleTransform.ScaleY" Value="2.5"/>
-                    </KeyFrame>
-                  </Animation>
+                  <KeyFrame Cue="70%">
+                    <Setter Property="ScaleTransform.ScaleX" Value="2"/>
+                    <Setter Property="ScaleTransform.ScaleY" Value="2"/>
+                  </KeyFrame>
+                  <KeyFrame Cue="90%">
+                    <Setter Property="ScaleTransform.ScaleX" Value="2.5"/>
+                    <Setter Property="ScaleTransform.ScaleY" Value="2.5"/>
+                  </KeyFrame>
+                </Animation>
                 <Animation Duration="0:0:2"
                            RepeatCount="Loop" 
                            PlaybackDirection="Alternate"
                            FillMode="None">
-                   <KeyFrame Cue="30%">
-                      <Setter Property="RotateTransform.Angle" Value="-45"/>
-                    </KeyFrame>
-                    <KeyFrame Cue="90%">
-                      <Setter Property="RotateTransform.Angle" Value="45"/>
-                    </KeyFrame>
-                  </Animation>
-
-                </Style.Animations>
-              </Style>
-            </Border.Styles>
-            <Image Width="32" Height="32" 
-                   Source="resm:Avalonia.BattleCity.Resources.Player.png" 
-                   RenderTransform="{Binding Facing, Converter={x:Static infrastructure:DirectionToMatrixConverter.Instance}}"/>
-          </Border>
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type model:Tank}">
-          <Image Width="32" Height="32" Source="resm:Avalonia.BattleCity.Resources.Tank.png" RenderTransform="{Binding Facing, Converter={x:Static infrastructure:DirectionToMatrixConverter.Instance}}"/>
-        </DataTemplate>
-      </ItemsControl.DataTemplates>
-    </ItemsControl>
-  </Window>
+                  <KeyFrame Cue="30%">
+                    <Setter Property="RotateTransform.Angle" Value="-45"/>
+                  </KeyFrame>
+                  <KeyFrame Cue="90%">
+                    <Setter Property="RotateTransform.Angle" Value="45"/>
+                  </KeyFrame>
+                </Animation>
+                
+              </Style.Animations>
+            </Style>
+          </Border.Styles>
+          <Image Width="32" Height="32" 
+                 Source="avares://Avalonia.BattleCity/Resources/Player.png" 
+                 RenderTransform="{Binding Facing, Converter={x:Static infrastructure:DirectionToMatrixConverter.Instance}}"/>
+        </Border>
+      </DataTemplate>
+      <DataTemplate DataType="{x:Type model:Tank}">
+        <Image Width="32" Height="32" Source="avares://Avalonia.BattleCity/Resources/Tank.png" RenderTransform="{Binding Facing, Converter={x:Static infrastructure:DirectionToMatrixConverter.Instance}}"/>
+      </DataTemplate>
+    </ItemsControl.DataTemplates>
+  </ItemsControl>
+</Window>
